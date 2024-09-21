@@ -1,7 +1,6 @@
-TOOLCHAIN_PREFIX = arm-none-eabi-
-CC = $(TOOLCHAIN_PREFIX)gcc
-CFLAGS = -Wall -Werror -Wno-main
-LDFLAGS = -T src/devices/stm32f103/linker.ld -mcpu=cortex-m3 -mthumb -nostdlib
+CC = arm-none-eabi-gcc
+CFLAGS = -Wall -Werror -pedantic -mcpu=cortex-m3 -mthumb
+LDFLAGS = -Tsrc/devices/stm32f103/linker.ld -nostdlib
 
 SRC = 	\
 	src/core/app/main.c \
@@ -23,3 +22,4 @@ clean:
 flash:
 	openocd -f interface/stlink.cfg -f target/stm32f1x.cfg \
 	-c "program bin/blinky.elf verify reset exit"
+

@@ -18,7 +18,7 @@
 
 #define LED_PIN 13
 
-void main(void)
+int main(void)
 {
         *RCC_APB2ENR |= (1 << RCC_APB2ENR_IOPC);
 
@@ -31,4 +31,6 @@ void main(void)
                 *GPIOC_ODR ^= (1 << LED_PIN);
                 for (uint32_t i = 0; i < 100000; i++);
         }
+
+        return 0;
 }
