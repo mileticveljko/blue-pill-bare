@@ -45,7 +45,7 @@ void default_handler(void)
 
 extern uint32_t _etext, _sdata, _edata, _sbss, _ebss;
 
-int main(void);
+void app(void);
 
 void reset_handler(void)
 {
@@ -66,6 +66,6 @@ void reset_handler(void)
                 bss[i] = 0;
         }
 
-        // Call main
-        main();
+        // Call main app
+        app();
 }
