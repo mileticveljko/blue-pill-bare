@@ -1,40 +1,5 @@
- # BLUE-PILL BARE MINIMUM
- ## Dependencies
- Install necessery packages for host sistem:  
- - On Debian/Ubuntu:  
- ```
- apt-get install make openocd
- ```  
- - On RHEL:  
- ```
- dnf install make openocd
- ```  
-
-**make** - build tool that automatically builds executable programs and libraries from source code by reading files called Makefile.   
-**openocd** - tool that provides debugging and in-system programming for embedded devices.  
-
-Download cross-compiling toolchain for arm:  
-- Download from official site [ARM Developer](https://developer.arm.com/downloads/-/gnu-rm) for your host architecture. For x86_64 use command:   
-```
-wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
-```
-- Unpack it somewhere and add path to bin directory of it to PATH variable:  
-```
-export PATH=$PATH:<path/to/toolchain/bin>
-```  
-(It is suggested to put previous command to **~/.bashrc** file, so it will be added automatically every time new terminal instance is created)
-
-## Usage
-- Clone this repo and enter repo directory.
-```
-git clone https://github.com/mileticveljko/blue-pill-bare.git && cd blue-pill-bare
-```
-- To build project run `make` command.  
-- To flash firmware with **ST-LINK** run `make flash` command.  
-- To clear project run `make clean` command.
-
-## Tutorials
-### 1. Cross-compilation and Toolchains
+# Tutorials
+## 1. Cross-compilation and Toolchains
 ***Cross compilation*** is a process in which cross-toolchain runs on the host machine and creates executables that run on different machine.  
 ***Toolchain*** or a ***Cross-compilation toolchain*** is a collection of binaries which allows you to compile, assemble, link and analize your applications.  
 Meaning of binaries from **GNU Tools (GCC)** for ARM processors which can be downloaded from official ARM site ([ARM Developer](https://developer.arm.com/downloads/-/gnu-rm)):  
@@ -71,7 +36,7 @@ Meaning of binaries from **GNU Tools (GCC)** for ARM processors which can be dow
 - **arm-none-eabi-gdb-add-index-py**: Python script for adding an index to GDB.
 - **arm-none-eabi-gdb-py**: Python-enabled version of GDB.
 
-### 2. Build-process
+## 2. Build-process
 In the picture below, the entire compilation and linking process is shown, which can be completed with **arm-none-eabi-gcc**. This tool can perform all the steps mentioned above, or they can be done separately using the individual binaries (**arm-none-eabi-cpp**, **arm-none-eabi-gcc**, **arm-none-eabi-as**, **arm-none-eabi-ld**), as illustrated below in the separate processes.
 
 <img title="Build Process" alt="" src="docs/images/build_process.png">
