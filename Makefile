@@ -1,25 +1,35 @@
+# Compiler and flags
 CC = arm-none-eabi-gcc
 CFLAGS = -Wall -Werror -pedantic -mcpu=cortex-m3 -mthumb
 LDFLAGS = -Tsrc/devices/stm32f103/linker.ld -nostdlib
 
-SRC = 	\
+# Source files
+SRC = \
 	src/core/app/main.c \
 	src/devices/stm32f103/startup.c
 
-all: blinky
+# Output directory and binary
+OUT_DIR = bin
+OUT_BIN = $(OUT_DIR)/blinky.elf
 
-blinky: $(SRC) build_dir
-	$(CC) $(SRC) $(CFLAGS) $(LDFLAGS) -o bin/blinky.elf
+# Default target
+all: $(OUT_BIN)
 
-build_dir:
-	mkdir -p bin
+# Build target
+$(OUT_BIN): $(SRC) | $(OUT_DIR)
+	$(CC) $(SRC) $(CFLAGS) $(LDFLAGS) -o $@
 
+# Create output directory if it doesn't exist
+$(OUT_DIR):
+	mkdir -p $@
+
+# Clean target
 .PHONY: clean
 clean:
-	rm -rf bin
+	rm -rf $(OUT_DIR)
 
+# Flash target
 .PHONY: flash
 flash:
 	openocd -f interface/stlink.cfg -f target/stm32f1x.cfg \
-	-c "program bin/blinky.elf verify reset exit"
-
+	-c "program $(OUT_BIN) verify reset exit"
