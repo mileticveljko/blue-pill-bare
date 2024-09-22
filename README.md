@@ -77,4 +77,4 @@ Meaning of binaries from **GNU Tools (GCC)** for ARM processors which can be dow
 ### 2. Build-process
 In the picture below, the entire compilation and linking process is shown, which can be completed with **arm-none-eabi-gcc**. This tool can perform all the steps mentioned above, or they can be done separately using the individual binaries (**arm-none-eabi-cpp**, **arm-none-eabi-gcc**, **arm-none-eabi-as**, **arm-none-eabi-ld**), as illustrated below in the separate processes.
 
-<img title="Build Process" alt="" src="docs/images/build_process.png">
+<img title="Build Process" alt="" src="docs/images/build_process.svg">
