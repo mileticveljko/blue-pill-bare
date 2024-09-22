@@ -33,6 +33,9 @@ git clone https://github.com/mileticveljko/blue-pill-bare.git && cd blue-pill-ba
 - To flash firmware with **ST-LINK** run `make flash` command.  
 - To clear project run `make clean` command.
 
+## Demo
+Demo on RHEL distibution: [Video](https://www.youtube.com/watch?v=gjyzOKyZtSc)
+
 ## Tutorials
 ### 1. Cross-compilation and Toolchains
 ***Cross compilation*** is a process in which cross-toolchain runs on the host machine and creates executables that run on different machine.  
